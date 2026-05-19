@@ -1,0 +1,832 @@
+/* ================= RESET ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* ================= BODY ================= */
+
+body{
+
+    /*
+        Основной фон теперь спокойный,
+        а яркие цвета будут только
+        на отдельных элементах
+    */
+
+    background:
+    linear-gradient(
+        180deg,
+        #0d1326 0%,
+        #141b34 40%,
+        #19143b 70%,
+        #10182d 100%
+    );
+
+    color:white;
+
+    font-family:'Press Start 2P', cursive;
+
+    overflow-x:hidden;
+
+    cursor:none;
+
+    position:relative;
+
+}
+
+/* ================= GLOW BACKGROUND ================= */
+
+/*
+    Небольшие цветные пятна
+    вместо полной радуги
+*/
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    width:700px;
+    height:700px;
+
+    top:-250px;
+    left:-250px;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(0,255,255,0.12),
+        transparent 70%
+    );
+
+    filter:blur(90px);
+
+    z-index:-2;
+
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    width:700px;
+    height:700px;
+
+    bottom:-250px;
+    right:-250px;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,0,128,0.10),
+        transparent 70%
+    );
+
+    filter:blur(90px);
+
+    z-index:-2;
+
+}
+
+/* ================= PIXEL CURSOR ================= */
+
+.cursor{
+
+    width:18px;
+    height:18px;
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    background:white;
+
+    border:3px solid black;
+
+    pointer-events:none;
+
+    z-index:99999;
+
+    transform:translate(-50%, -50%);
+
+    box-shadow:
+        0 0 10px white,
+        0 0 20px #00ffee;
+
+}
+
+.cursor.active{
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.6);
+
+}
+
+/* ================= PARALLAX ================= */
+
+.parallax-layer{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:-1;
+
+}
+
+/* ================= STARS ================= */
+
+.stars{
+
+    background:url("images/stars.png");
+
+    opacity:0.35;
+
+    animation:moveStars 180s linear infinite;
+
+}
+
+/* ================= FOG ================= */
+
+.fog{
+
+    background:url("images/fog.png");
+
+    opacity:0.08;
+
+    animation:fogMove 70s linear infinite;
+
+}
+
+/* ================= PARTICLES ================= */
+
+.particles{
+
+    background:url("images/particles.png");
+
+    opacity:0.10;
+
+    animation:particlesMove 90s linear infinite;
+
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+
+    position:sticky;
+
+    top:0;
+
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px 40px;
+
+    background:
+    rgba(8,12,24,0.85);
+
+    backdrop-filter:blur(12px);
+
+    border-bottom:
+    2px solid rgba(255,255,255,0.08);
+
+    z-index:1000;
+
+}
+
+/* ================= LOGO ================= */
+
+.logo{
+
+    color:#00ffee;
+
+    text-shadow:
+        0 0 10px #00ffee;
+
+}
+
+/* ================= NAVIGATION ================= */
+
+.nav-links{
+
+    display:flex;
+
+    gap:25px;
+
+    list-style:none;
+
+}
+
+.nav-links a{
+
+    text-decoration:none;
+
+    transition:.3s;
+
+    font-size:0.7rem;
+
+}
+
+/* ================= DIFFERENT LINK COLORS ================= */
+
+/*
+    У каждого раздела свой цвет
+*/
+
+.nav-red{
+    color:#ff5c7a;
+}
+
+.nav-orange{
+    color:#ffb347;
+}
+
+.nav-yellow{
+    color:#ffe066;
+}
+
+.nav-green{
+    color:#4dffb8;
+}
+
+.nav-blue{
+    color:#59b8ff;
+}
+
+.nav-purple{
+    color:#bb86ff;
+}
+
+.nav-pink{
+    color:#ff7ee2;
+}
+
+.nav-links a:hover{
+
+    transform:translateY(-3px);
+
+    text-shadow:
+        0 0 10px currentColor,
+        0 0 20px currentColor;
+
+}
+
+/* ================= HERO ================= */
+
+.hero{
+
+    position:relative;
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.65)
+    ),
+    url("images/hero-bg.png")
+    center/cover no-repeat;
+
+}
+
+/* ================= HERO OVERLAY ================= */
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    radial-gradient(
+        circle at top,
+        rgba(0,255,255,0.10),
+        transparent 60%
+    );
+
+}
+
+/* ================= HERO CONTENT ================= */
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.hero h1{
+
+    font-size:5rem;
+
+    color:#ffffff;
+
+    text-shadow:
+        0 0 10px #00ffee,
+        0 0 25px #00ffee;
+
+}
+
+.hero p{
+
+    margin-top:30px;
+
+    color:#dddddd;
+
+    font-size:1rem;
+
+}
+
+/* ================= BUTTONS ================= */
+
+/*
+    Кнопки — самые яркие элементы
+*/
+
+.btn{
+
+    display:inline-block;
+
+    margin-top:35px;
+
+    padding:18px 35px;
+
+    border-radius:16px;
+
+    background:
+    linear-gradient(
+        45deg,
+        #00ffee,
+        #5b8cff
+    );
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+    box-shadow:
+        0 0 20px rgba(0,255,238,0.35);
+
+}
+
+.btn:hover{
+
+    transform:
+        translateY(-5px)
+        scale(1.05);
+
+    box-shadow:
+        0 0 35px rgba(0,255,238,0.6);
+
+}
+
+/* ================= BETA BUTTON ================= */
+
+/*
+    Специальный цвет для beta/demo
+*/
+
+.beta-btn{
+
+    background:
+    linear-gradient(
+        45deg,
+        #ff7a18,
+        #ff3d77
+    );
+
+    box-shadow:
+        0 0 20px rgba(255,61,119,0.4);
+
+}
+
+.beta-btn:hover{
+
+    box-shadow:
+        0 0 35px rgba(255,61,119,0.7);
+
+}
+
+/* ================= SECTIONS ================= */
+
+.section{
+
+    padding:100px 10%;
+
+    text-align:center;
+
+}
+
+.section h2{
+
+    margin-bottom:50px;
+
+    font-size:2rem;
+
+    color:white;
+
+}
+
+/* ================= DARK SECTIONS ================= */
+
+.dark{
+
+    background:
+    rgba(255,255,255,0.03);
+
+    backdrop-filter:blur(10px);
+
+}
+
+/* ================= CARDS ================= */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:30px;
+
+}
+
+/*
+    Теперь каждая карточка
+    имеет собственный акцент
+*/
+
+.card{
+
+    padding:40px 25px;
+
+    border-radius:24px;
+
+    background:
+    rgba(255,255,255,0.05);
+
+    border:2px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(10px);
+
+    transition:.4s;
+
+}
+
+/* Card Colors */
+
+.card:nth-child(1){
+
+    border-color:#ff5c7a;
+
+    box-shadow:
+        0 0 20px rgba(255,92,122,0.18);
+
+}
+
+.card:nth-child(2){
+
+    border-color:#00ffee;
+
+    box-shadow:
+        0 0 20px rgba(0,255,238,0.18);
+
+}
+
+.card:nth-child(3){
+
+    border-color:#ffd966;
+
+    box-shadow:
+        0 0 20px rgba(255,217,102,0.18);
+
+}
+
+.card:nth-child(4){
+
+    border-color:#bb86ff;
+
+    box-shadow:
+        0 0 20px rgba(187,134,255,0.18);
+
+}
+
+.card:hover{
+
+    transform:
+        translateY(-10px)
+        scale(1.03);
+
+}
+
+/* ================= GALLERY ================= */
+
+.gallery{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+
+}
+
+.gallery img{
+
+    width:100%;
+
+    border-radius:20px;
+
+    transition:.4s;
+
+}
+
+/*
+    Разные цвета рамок
+*/
+
+.gallery img:nth-child(1){
+
+    border:3px solid #00ffee;
+
+}
+
+.gallery img:nth-child(2){
+
+    border:3px solid #ff7a18;
+
+}
+
+.gallery img:nth-child(3){
+
+    border:3px solid #bb86ff;
+
+}
+
+.gallery img:nth-child(4){
+
+    border:3px solid #4dffb8;
+
+}
+
+.gallery img:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* ================= CHARACTERS ================= */
+
+.characters{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:30px;
+
+}
+
+.character-card{
+
+    padding:30px;
+
+    border-radius:24px;
+
+    background:
+    rgba(255,255,255,0.05);
+
+    backdrop-filter:blur(10px);
+
+    transition:.4s;
+
+}
+
+.character-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+        0 0 25px rgba(255,255,255,0.15);
+
+}
+
+/* ================= STATS ================= */
+
+.stats{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:30px;
+
+    flex-wrap:wrap;
+
+}
+
+.stat{
+
+    width:200px;
+
+    padding:40px 20px;
+
+    border-radius:24px;
+
+    background:
+    rgba(255,255,255,0.05);
+
+    border:2px solid rgba(255,255,255,0.08);
+
+}
+
+/* Different Stat Colors */
+
+.stat:nth-child(1){
+
+    border-color:#00ffee;
+
+}
+
+.stat:nth-child(2){
+
+    border-color:#ff7a18;
+
+}
+
+.stat:nth-child(3){
+
+    border-color:#bb86ff;
+
+}
+
+.stat:nth-child(4){
+
+    border-color:#4dffb8;
+
+}
+
+.stat span{
+
+    display:block;
+
+    margin-bottom:20px;
+
+    font-size:3rem;
+
+    color:white;
+
+}
+
+/* ================= DEMO ================= */
+
+.demo-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:40px;
+
+}
+
+.game-frame{
+
+    width:100%;
+
+    max-width:1000px;
+
+    height:600px;
+
+    border-radius:24px;
+
+    border:4px solid #00ffee;
+
+    box-shadow:
+        0 0 35px rgba(0,255,238,0.25);
+
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+
+    padding:40px;
+
+    text-align:center;
+
+    background:
+    rgba(0,0,0,0.25);
+
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes moveStars{
+
+    from{
+        background-position:0 0;
+    }
+
+    to{
+        background-position:2500px 1500px;
+    }
+
+}
+
+@keyframes fogMove{
+
+    from{
+        background-position:0 0;
+    }
+
+    to{
+        background-position:1500px 0;
+    }
+
+}
+
+@keyframes particlesMove{
+
+    from{
+        background-position:0 0;
+    }
+
+    to{
+        background-position:1000px 2000px;
+    }
+
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .hero h1{
+        font-size:3rem;
+    }
+
+    .navbar{
+
+        flex-direction:column;
+
+        gap:20px;
+
+    }
+
+    .nav-links{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+    }
+
+    .game-frame{
+        height:400px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .section{
+        padding:70px 5%;
+    }
+
+    .game-frame{
+        height:300px;
+    }
+
+}
